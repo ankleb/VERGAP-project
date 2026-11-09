@@ -1,0 +1,74 @@
+---
+---
+// PLACEHOLDER STYLING — deliberately plain. The visual design will be decided
+// separately; when it is, this file is the main thing that changes.
+
+:root {
+  --text: #1d1d1f;
+  --muted: #5f6368;
+  --bg: #ffffff;
+  --line: #e2e2e2;
+  --link: #1a4f8b;
+  --max: 46rem;
+  --font: Georgia, "Times New Roman", "Noto Serif", serif;
+  --ui-font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--text); background: var(--bg); font: 1.0625rem/1.65 var(--font); }
+a { color: var(--link); }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 1rem; }
+.small, .meta { font-size: .875rem; color: var(--muted); font-family: var(--ui-font); }
+
+/* Header and menu */
+.site-header { border-bottom: 1px solid var(--line); font-family: var(--ui-font); }
+.header-inner { display: flex; flex-wrap: wrap; gap: .5rem 2rem; align-items: center; justify-content: space-between; padding-top: 1rem; padding-bottom: 1rem; }
+.brand { text-decoration: none; color: var(--text); display: flex; flex-direction: column; }
+.brand-name { font-weight: 700; font-size: 1.25rem; letter-spacing: .04em; }
+.brand-sub { font-size: .8rem; color: var(--muted); }
+.menu { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; }
+.menu a, .menu summary { text-decoration: none; color: var(--text); cursor: pointer; }
+.menu a[aria-current], .menu summary.current { color: var(--link); font-weight: 600; }
+.has-children { position: relative; }
+.has-children summary { list-style: none; }
+.has-children summary::after { content: " ▾"; font-size: .75em; }
+.submenu { list-style: none; margin: .25rem 0 0; padding: .5rem .75rem; position: absolute; z-index: 10; background: var(--bg); border: 1px solid var(--line); min-width: 15rem; }
+.submenu li { padding: .2rem 0; }
+
+/* Content */
+main { padding-top: 2rem; padding-bottom: 3rem; }
+.page-header { margin-bottom: 1.5rem; }
+.page-header h1, .home-intro h1 { margin: 0 0 .25rem; line-height: 1.25; }
+.page-desc { margin: 0; color: var(--muted); font-size: 1.1rem; }
+.prose h2 { margin-top: 2rem; }
+.home-section { margin-top: 2.5rem; }
+.home-section h2 a { color: inherit; text-decoration: none; }
+
+/* Edition / transcription links */
+.text-links { list-style: none; padding: 0; }
+.text-links li { border-top: 1px solid var(--line); padding: .75rem 0; display: flex; flex-direction: column; }
+.text-link-title { font-weight: 600; }
+.text-link-note { color: var(--muted); }
+.text-link-meta { font-family: var(--ui-font); font-size: .8rem; color: var(--muted); display: flex; gap: 1rem; }
+
+/* News */
+.post-list { list-style: none; padding: 0; }
+.post-list li { display: flex; gap: 1rem; padding: .4rem 0; }
+.post-date { flex: 0 0 6.5rem; color: var(--muted); font-family: var(--ui-font); font-size: .875rem; padding-top: .15rem; }
+.post-desc { margin: .1rem 0 0; color: var(--muted); }
+.label { font-family: var(--ui-font); font-size: .75rem; border: 1px solid var(--line); border-radius: 3px; padding: 0 .35rem; color: var(--muted); }
+
+/* Bibliography */
+ol.bibliography { list-style: none; padding: 0; }
+ol.bibliography li { margin-bottom: .9rem; }
+.bib-links { font-family: var(--ui-font); font-size: .8rem; display: flex; flex-wrap: wrap; gap: .75rem; align-items: baseline; }
+.bib-links pre { white-space: pre-wrap; font-size: .75rem; background: #f6f6f6; padding: .5rem; }
+
+/* Footer */
+.site-footer { border-top: 1px solid var(--line); padding: 1.5rem 0 2rem; font-family: var(--ui-font); font-size: .9rem; }
+.funding p { margin: 0 0 .5rem; }
+
+@media (max-width: 40rem) {
+  .post-list li { flex-direction: column; gap: 0; }
+  .post-date { flex: none; }
+}

@@ -1,0 +1,17 @@
+{%- comment -%}
+  Footer on every page. Funding texts are set in _config.yml.
+  TODO (design): add the official EU emblem image next to the funding statement.
+{%- endcomment -%}
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="funding">
+      <p>{{ site.funding_statement }}</p>
+      <p class="small">{{ site.eu_disclaimer }}</p>
+    </div>
+    <p class="small">
+      <a href="{{ site.cordis_url }}">CORDIS project page</a> ·
+      <a href="{{ '/feed.xml' | relative_url }}">RSS feed</a> ·
+      Website last built {{ site.time | date: '%-d %B %Y' }}.
+    </p>
+  </div>
+</footer>

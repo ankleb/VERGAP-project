@@ -1,0 +1,38 @@
+{%- comment -%}
+  Site header and menu. The menu items come from _data/menu.yml.
+{%- endcomment -%}
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <span class="brand-name">{{ site.title }}</span>
+      <span class="brand-sub">{{ site.subtitle }}</span>
+    </a>
+    <nav aria-label="Main menu">
+      <ul class="menu">
+        {%- for item in site.data.menu %}
+          {%- if item.url contains '://' -%}{%- assign href = item.url -%}{%- else -%}{%- assign href = item.url | relative_url -%}{%- endif -%}
+          {%- assign here = false -%}
+          {%- if page.url == item.url -%}{%- assign here = true -%}{%- endif -%}
+          {%- if item.url != '/' and page.url contains item.url -%}{%- assign here = true -%}{%- endif -%}
+          {%- if item.url == '/news/' and page.collection == 'posts' -%}{%- assign here = true -%}{%- endif -%}
+          {%- if item.children %}
+        <li class="has-children">
+          <details>
+            <summary{% if here %} class="current"{% endif %}>{{ item.title }}</summary>
+            <ul class="submenu">
+              <li><a href="{{ href }}">Overview</a></li>
+              {%- for child in item.children %}
+              {%- if child.url contains '://' -%}{%- assign chref = child.url -%}{%- else -%}{%- assign chref = child.url | relative_url -%}{%- endif %}
+              <li><a href="{{ chref }}"{% if page.url == child.url %} aria-current="page"{% endif %}>{{ child.title }}</a></li>
+              {%- endfor %}
+            </ul>
+          </details>
+        </li>
+          {%- else %}
+        <li><a href="{{ href }}"{% if here %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
+          {%- endif %}
+        {%- endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

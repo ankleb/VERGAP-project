@@ -1,0 +1,32 @@
+# Links to the edition and manuscript transcriptions.
+#
+# These are displayed by the Saktumiva2/TST viewer from the separate
+# ankleb/VERGAP repository. This website only LINKS to them: it never copies
+# them, and updating them does not rebuild this website.
+#
+#   url:          the public view (keep exactly as published)
+#   source_file:  the file's path inside ankleb/VERGAP; used to show the
+#                 "last updated" date, read live from GitHub in the visitor's browser
+#
+# Every page that mentions the edition or a transcription takes its link from
+# here, so if an address ever changes, change it once, here.
+
+source_repo: ankleb/VERGAP
+
+edition:
+  title: Gaṇapāṭhavivṛtti — provisional critical edition
+  url: https://ankleb.github.io/VERGAP/gpv_provisional-edition.xml
+  source_file: gpv_provisional-edition.xml
+  note: Evolving critical edition with translation and annotations.
+
+witnesses:
+  - title: Kurukshetra manuscript
+    siglum: "TODO: siglum"
+    url: https://ankleb.github.io/VERGAP/witnesses/kurukshetra_235.xml?facs=3
+    source_file: witnesses/kurukshetra_235.xml
+    note: "TODO: shelfmark, library, short description."
+  - title: Wai manuscript
+    siglum: W
+    url: https://ankleb.github.io/VERGAP/witnesses/wai_9312.xml?corresp=W&corresp=GPV_1.1
+    source_file: witnesses/wai_9312.xml
+    note: "TODO: shelfmark, library, short description."

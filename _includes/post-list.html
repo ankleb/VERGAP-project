@@ -1,0 +1,17 @@
+{%- comment -%}
+  A list of news items. Optional: {% include post-list.html limit=3 %}
+{%- endcomment -%}
+{%- assign n = include.limit | default: 1000 -%}
+<ul class="post-list">
+  {%- for post in site.posts limit: n %}
+  <li>
+    <span class="post-date">{{ post.date | date: '%-d %b %Y' }}</span>
+    <div>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>{% if post.category %} <span class="label">{{ post.category }}</span>{% endif %}
+      {%- if post.description %}<p class="post-desc">{{ post.description }}</p>{% endif %}
+    </div>
+  </li>
+  {%- else %}
+  <li>No news yet.</li>
+  {%- endfor %}
+</ul>

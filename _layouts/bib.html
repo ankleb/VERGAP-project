@@ -1,0 +1,14 @@
+---
+---
+{%- comment -%}
+  How one bibliography entry is shown: the formatted reference
+  (style set in _config.yml), then DOI / link, then a fold-out BibTeX box.
+{%- endcomment -%}
+<div class="bib-entry">
+  <div class="bib-ref">{{ reference }}</div>
+  <div class="bib-links">
+    {%- if entry.doi %}<a href="https://doi.org/{{ entry.doi }}">doi:{{ entry.doi }}</a>{% endif -%}
+    {%- if entry.url and entry.doi == nil %}<a href="{{ entry.url }}">Link</a>{% endif -%}
+    <details><summary>BibTeX</summary><pre>{{ entry.bibtex | xml_escape }}</pre></details>
+  </div>
+</div>

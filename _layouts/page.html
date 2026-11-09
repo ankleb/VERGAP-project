@@ -1,0 +1,27 @@
+---
+layout: default
+---
+{%- comment -%}
+  An ordinary page. Optional front matter:
+    description:   one line shown under the title
+    last_updated:  YYYY-MM-DD, shown as "Last updated …"
+    references:    true  → adds a list of all works cited on this page
+{%- endcomment -%}
+<article class="page">
+  <header class="page-header">
+    <h1>{{ page.title }}</h1>
+    {%- if page.description %}<p class="page-desc">{{ page.description }}</p>{% endif %}
+    {%- if page.last_updated %}<p class="meta">Last updated {{ page.last_updated | date: '%-d %B %Y' }}</p>{% endif %}
+  </header>
+
+  <div class="prose">
+    {{ content }}
+
+    {%- if page.references %}
+    <h2 id="references">References</h2>
+    <div class="bibliography-list">
+      {% bibliography --cited --group_by none --sort_by author,year --order ascending,ascending %}
+    </div>
+    {%- endif %}
+  </div>
+</article>

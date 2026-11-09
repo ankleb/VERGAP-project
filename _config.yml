@@ -1,0 +1,88 @@
+# -----------------------------------------------------------------------------
+# VERGAP project website — main settings
+#
+# Menu:              _data/menu.yml
+# Links to the edition and transcriptions:  _data/text_links.yml
+# Bibliography:      _bibliography/references.bib  (works you cite)
+#                    _bibliography/outputs.bib     (your own outputs)
+# After changing this file, the site rebuilds automatically when you push.
+# -----------------------------------------------------------------------------
+
+title: VERGAP
+subtitle: Verse, Grammar, Pedagogy
+long_title: "VERGAP — Verse, Grammar, Pedagogy: The Gaṇapāṭhavivṛtti of Prakāśavarṣa"
+description: >-
+  An MSCA Postdoctoral Fellowship project at the University of Hamburg (2026–2028)
+  preparing the first critical edition and study of the Gaṇapāṭhavivṛtti by Prakāśavarṣa.
+project_dates: 2026–2028
+author: "TODO: your name"
+lang: en
+timezone: Europe/Berlin
+
+# Address of the published site. If you later use your own domain,
+# change url to it and set baseurl to "".
+url: https://ankleb.github.io
+baseurl: /VERGAP-project
+
+# --- Funding (shown in the footer and on the Project page) -------------------
+# Check the exact wording against Article 17 / Annex 5 of your Grant Agreement.
+grant_number: "101283632"
+cordis_url: https://cordis.europa.eu/project/id/101283632
+funding_statement: >-
+  This project has received funding from the European Union’s Horizon Europe
+  research and innovation programme under the Marie Skłodowska-Curie grant
+  agreement No. 101283632.
+eu_disclaimer: >-
+  Funded by the European Union. Views and opinions expressed are however those of
+  the author(s) only and do not necessarily reflect those of the European Union or
+  the European Research Executive Agency (REA). Neither the European Union nor the
+  granting authority can be held responsible for them.
+
+# --- News / blog -------------------------------------------------------------
+permalink: /news/:year/:title/
+
+# --- Content -----------------------------------------------------------------
+include: ["_pages"]
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+  - .github
+
+defaults:
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+  - scope: { path: "_pages" }
+    values: { layout: page }
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+sass:
+  style: compressed
+
+# --- Plugins -----------------------------------------------------------------
+plugins:
+  - jekyll/scholar     # citations and bibliographies from .bib files
+  - jekyll-feed        # /feed.xml (RSS) for the news section
+  - jekyll-sitemap     # /sitemap.xml for search engines
+  - jekyll-seo-tag     # page titles and descriptions for search engines
+
+# --- Bibliography (jekyll-scholar) -------------------------------------------
+#   In a page:  {% cite key %}  or  {% cite key -l 45 %}
+#   At the end: {% bibliography --cited %}
+#   Other styles: apa, modern-language-association, chicago-fullnote-bibliography
+scholar:
+  style: chicago-author-date
+  locale: en
+  source: /_bibliography/
+  bibliography: references.bib
+  bibliography_template: bib
+  sort_by: year,author
+  order: descending,ascending
+  group_by: none
+  replace_strings: true
+  join_strings: true
+  bibtex_filters: [latex, smallcaps, superscript]

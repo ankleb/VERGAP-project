@@ -1,0 +1,21 @@
+---
+layout: default
+---
+{%- comment -%}
+  The home page. Its text is in _pages/index.md; the sections below are added
+  automatically: links to the texts (from _data/text_links.yml) and latest news.
+{%- endcomment -%}
+<section class="home-intro">
+  <h1>{{ site.long_title }}</h1>
+  <div class="prose">{{ content }}</div>
+</section>
+
+<section class="home-section">
+  <h2>The edition and transcriptions</h2>
+  {% include text-links.html %}
+</section>
+
+<section class="home-section">
+  <h2><a href="{{ '/news/' | relative_url }}">Latest news</a></h2>
+  {% include post-list.html limit=3 %}
+</section>

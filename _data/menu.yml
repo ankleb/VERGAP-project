@@ -1,0 +1,29 @@
+# The site menu, in order. To rename a section, change its "title".
+# "children" makes a drop-down. Links starting with http go to other sites.
+# Comment out a line with # to hide it without deleting it.
+
+- title: The Project
+  url: /project/
+
+- title: The Text and Its Author
+  url: /text/
+  children:
+    - title: Introduction
+      url: /text/introduction/
+    - title: Method
+      url: /text/method/
+    - title: Edition and Transcriptions
+      url: /text/edition/
+
+- title: Outputs
+  url: /outputs/
+
+- title: News
+  url: /news/
+
+- title: About
+  url: /about/
+
+# Later, once the comparative resource exists:
+# - title: Comparative Resource
+#   url: https://ankleb.github.io/REPOSITORY-NAME/
