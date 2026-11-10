@@ -16,6 +16,14 @@
         Website last built {{ site.time | date: '%-d %B %Y' }}
       </p>
     </div>
-    <div class="footer-logo placeholder" aria-hidden="true">[Universität Hamburg logo]</div>
+    {%- comment -%}
+      Universität Hamburg logo, official "Farbnegativ" (colour-negative) version
+      for dark backgrounds, converted from the university's EPS file with the
+      web red #e2001a. Shown at the official web size (213 × 68 px) with at
+      least 20 px clear space around it.
+    {%- endcomment %}
+    <a class="footer-uhh" href="https://www.uni-hamburg.de/">
+      <img src="{{ '/assets/img/logo/uhh-logo-negativ.svg' | relative_url }}" alt="Universität Hamburg" width="210" height="68">
+    </a>
   </div>
 </footer>
