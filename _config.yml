@@ -26,6 +26,14 @@ timezone: Europe/Berlin
 url: https://ankleb.github.io
 baseurl: /VERGAP-project
 
+# --- Search engines ----------------------------------------------------------
+# To verify the site in Google Search Console / Bing Webmaster Tools, choose
+# "HTML tag" there, copy only the code inside content="…", remove the # signs
+# below and paste it in place of PASTE-CODE-HERE.
+# webmaster_verifications:
+#   google: PASTE-CODE-HERE
+#   bing: PASTE-CODE-HERE
+
 # --- Funding (shown in the footer and on the Project page) -------------------
 # Check the exact wording against Article 17 / Annex 5 of your Grant Agreement.
 grant_number: "101283632"
