@@ -1,7 +1,7 @@
 ---
 title: Introduction
 permalink: /text/introduction/
-description: Prakāśavarṣa and the Gaṇapāṭhavivṛtti
+description: Prakāśavarṣa and the Gaṇapāṭhavivṛti
 last_updated: 2026-11-09
 references: true
 ---

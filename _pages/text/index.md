@@ -1,7 +1,7 @@
 ---
 title: The Text and Its Author
 permalink: /text/
-description: The Gaṇapāṭhavivṛtti of Prakāśavarṣa
+description: The Gaṇapāṭhavivṛti of Prakāśavarṣa
 ---
 
 TODO: A short paragraph leading into this section.

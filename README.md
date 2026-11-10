@@ -80,7 +80,7 @@ and add one keyword so it appears under the right heading on the Outputs page:
 ```bibtex
 @misc{vergap-edition-v1,
   author    = {Surname, Firstname},
-  title     = {Gaṇapāṭhavivṛtti: provisional critical edition},
+  title     = {Gaṇapāṭhavivṛti: provisional critical edition},
   year      = {2027},
   publisher = {Zenodo},
   version   = {v1.0},

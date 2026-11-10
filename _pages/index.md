@@ -4,4 +4,4 @@ title: Home
 permalink: /
 ---
 
-TODO: Two or three sentences introducing VERGAP and the Gaṇapāṭhavivṛtti of Prakāśavarṣa.
+TODO: Two or three sentences introducing VERGAP and the Gaṇapāṭhavivṛti of Prakāśavarṣa.
