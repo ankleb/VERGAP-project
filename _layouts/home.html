@@ -2,20 +2,55 @@
 layout: default
 ---
 {%- comment -%}
-  The home page. Its text is in _pages/index.md; the sections below are added
-  automatically: links to the texts (from _data/text_links.yml) and latest news.
+  The home page. The heading and the button labels are set in the front matter
+  of _pages/index.md; its text is the short introduction under the heading.
+  The rest fills itself: edition links (_data/text_links.yml), the three
+  section cards (_data/menu.yml), news (_posts/) and the latest output
+  (_bibliography/outputs.bib).
 {%- endcomment -%}
-<section class="home-intro">
-  <h1>{{ site.long_title }}</h1>
-  <div class="prose">{{ content }}</div>
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-text">
+      <p class="eyebrow">{{ site.eyebrow }}</p>
+      <h1>{{ page.heading | default: site.long_title }}</h1>
+      <div class="lede">{{ content }}</div>
+      <p class="buttons">
+        <a class="button button-primary" href="{{ '/project/' | relative_url }}">About the project</a>
+        <a class="button button-secondary" href="{{ '/text/introduction/' | relative_url }}">Read the introduction</a>
+      </p>
+    </div>
+    <aside class="card text-card" aria-labelledby="text-card-title">
+      <h2 id="text-card-title">The edition and transcriptions</h2>
+      <p class="card-note">Work in progress · opens in the Saktumiva / TST viewer</p>
+      {% include text-links.html %}
+    </aside>
+  </div>
 </section>
 
-<section class="home-section">
-  <h2>The edition and transcriptions</h2>
-  {% include text-links.html %}
+{%- assign section = site.data.menu | where: "url", "/text/" | first %}
+<section class="wrap home-section">
+  <h2>{{ section.title }}</h2>
+  <div class="card-grid">
+    {%- for child in section.children %}
+    <a class="card section-card" href="{{ child.url | relative_url }}">
+      <span class="section-card-title">{{ child.title }}</span>
+      <span class="section-card-desc">{{ child.description }}</span>
+      <span class="more">Read →</span>
+    </a>
+    {%- endfor %}
+  </div>
 </section>
 
-<section class="home-section">
-  <h2><a href="{{ '/news/' | relative_url }}">Latest news</a></h2>
-  {% include post-list.html limit=3 %}
+<section class="wrap home-section home-split">
+  <div class="home-news">
+    <h2><a href="{{ '/news/' | relative_url }}">News</a></h2>
+    {% include post-list.html limit=3 %}
+  </div>
+  <div class="home-output">
+    <h2><a href="{{ '/outputs/' | relative_url }}">Latest output</a></h2>
+    <div class="bibliography-list">
+      {% bibliography --file outputs --max 1 --group_by none --sort_by year --order descending %}
+    </div>
+    <p><a href="{{ '/outputs/' | relative_url }}">All outputs →</a></p>
+  </div>
 </section>

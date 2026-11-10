@@ -1,14 +1,14 @@
 {%- comment -%}
   The list of links to the edition and transcriptions, from _data/text_links.yml.
   Use it on any page with:   {% include text-links.html %}
-  The "last updated" dates are read live from GitHub by assets/js/site.js,
+  The "Last updated" dates are read live from GitHub by assets/js/site.js,
   so they stay current without rebuilding this website.
 {%- endcomment -%}
 {%- assign t = site.data.text_links -%}
 <ul class="text-links">
   <li>
-    <a class="text-link-title" href="{{ t.edition.url }}">{{ t.edition.title }}</a>
-    <span class="text-link-note">{{ t.edition.note }}</span>
+    <a class="text-link-title" href="{{ t.edition.url }}">{{ t.edition.title }} →</a>
+    {%- if include.notes %}<span class="text-link-note">{{ t.edition.note }}</span>{% endif %}
     <span class="text-link-meta">
       <span data-gh-repo="{{ t.source_repo }}" data-gh-path="{{ t.edition.source_file }}"></span>
       <a href="https://github.com/{{ t.source_repo }}/commits/main/{{ t.edition.source_file }}">Change history</a>
@@ -16,8 +16,8 @@
   </li>
   {%- for w in t.witnesses %}
   <li>
-    <a class="text-link-title" href="{{ w.url }}">{{ w.title }}</a>
-    <span class="text-link-note">{{ w.note }}</span>
+    <a class="text-link-title" href="{{ w.url }}">{{ w.title }} →</a>
+    {%- if include.notes %}<span class="text-link-note">{{ w.note }}</span>{% endif %}
     <span class="text-link-meta">
       <span data-gh-repo="{{ t.source_repo }}" data-gh-path="{{ w.source_file }}"></span>
       <a href="https://github.com/{{ t.source_repo }}/commits/main/{{ w.source_file }}">Change history</a>

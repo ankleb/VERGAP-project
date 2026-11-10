@@ -3,17 +3,19 @@ layout: default
 ---
 {%- comment -%}
   A news item / blog post (files in _posts/). Optional front matter:
-    category:   news | conference | publication | blog  (shown as a label)
+    category:    news | conference | publication | blog  (shown as a label)
     description: one-line summary for the news list
-    references: true → list of works cited in the post
+    references:  true → list of works cited in the post
 {%- endcomment -%}
-<article class="page">
-  <header class="page-header">
-    <p class="meta"><a href="{{ '/news/' | relative_url }}">News</a>{% if page.category %} · {{ page.category }}{% endif %}</p>
+<header class="page-hero">
+  <div class="wrap">
+    <p class="meta"><a href="{{ '/news/' | relative_url }}">News</a>{% if page.category %} · <span class="label">{{ page.category }}</span>{% endif %}</p>
     <h1>{{ page.title }}</h1>
     <p class="meta">{{ page.date | date: '%-d %B %Y' }}{% if page.author %} · {{ page.author }}{% endif %}</p>
-  </header>
+  </div>
+</header>
 
+<article class="wrap page-body">
   <div class="prose">
     {{ content }}
 

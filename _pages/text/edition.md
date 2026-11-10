@@ -9,6 +9,6 @@ often. They are kept in a separate repository,
 [ankleb/VERGAP](https://github.com/ankleb/VERGAP), and displayed with the
 Saktumiva/TST viewer. The links below always lead to the current version.
 
-{% include text-links.html %}
+{% include text-links.html notes=true %}
 
 TODO: How to cite a specific version (e.g. Zenodo releases), and the licence.

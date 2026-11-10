@@ -8,12 +8,16 @@
 - title: The Text and Its Author
   url: /text/
   children:
+    # "description" is shown on the home-page cards
     - title: Introduction
       url: /text/introduction/
+      description: Prakāśavarṣa and his commentary on the gaṇapāṭha.
     - title: Method
       url: /text/method/
+      description: TEI transcription, alignment and editing with Saktumiva.
     - title: Edition and Transcriptions
       url: /text/edition/
+      description: The evolving text and the manuscript witnesses.
 
 - title: Outputs
   url: /outputs/

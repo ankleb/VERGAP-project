@@ -3,13 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {% seo %}
+  {%- comment -%} Browser-tab title: "Page name · VERGAP" {%- endcomment -%}
+  <title>{% if page.url == '/' %}{{ site.title }} · {{ site.subtitle }}{% else %}{{ page.title | strip_html }} · {{ site.title }}{% endif %}</title>
+  {% seo title=false %}
   {% feed_meta %}
+  <link rel="icon" href="{{ '/assets/img/logo/favicon.svg' | relative_url }}" type="image/svg+xml">
+  <link rel="icon" href="{{ '/assets/img/logo/favicon-32.png' | relative_url }}" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="{{ '/assets/img/logo/apple-touch-icon.png' | relative_url }}">
+  <meta name="theme-color" content="#2b241d">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libertinus+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Libertinus+Sans:ital,wght@0,400;0,700;1,400&display=swap">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
 <body>
+  <a class="skip-link" href="#content">Skip to content</a>
   {% include header.html %}
-  <main id="content" class="wrap">
+  <main id="content">
     {{ content }}
   </main>
   {% include footer.html %}

@@ -1,74 +1,178 @@
 ---
 ---
-// PLACEHOLDER STYLING — deliberately plain. The visual design will be decided
-// separately; when it is, this file is the main thing that changes.
+// =============================================================================
+// VERGAP website design
+//
+// Paper and ink from the Kashmiri Śāradā manuscript, with a faded vermilion
+// accent. Typeface: Libertinus Serif (text) and Libertinus Sans (small labels).
+// To change a colour everywhere, change it once in the block below.
+// =============================================================================
 
 :root {
-  --text: #1d1d1f;
-  --muted: #5f6368;
-  --bg: #ffffff;
-  --line: #e2e2e2;
-  --link: #1a4f8b;
-  --max: 46rem;
-  --font: Georgia, "Times New Roman", "Noto Serif", serif;
-  --ui-font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  // Colours
+  --ink:        #2b241d;   // header, footer, main text
+  --paper:      #fbf8f2;   // page background
+  --paper-tint: #efe4d2;   // coloured bands (home hero, page titles)
+  --card:       #ffffff;   // cards
+  --rule:       #e3d9c8;   // thin lines
+  --rule-dark:  #d8cdbb;   // card borders
+  --muted:      #5a4e40;   // secondary text
+  --red:        #a04b3b;   // links, labels (dark enough to read as text)
+  --red-fill:   #a8503f;   // red areas that are not text
+  --red-hover:  #6f3226;
+  --on-ink:     #f6f0e4;   // text on the dark header/footer
+  --on-ink-muted: #cbb89a;
+  --on-ink-rule:  #5a4e40;
+
+  // Type
+  --serif: 'Libertinus Serif', 'Gentium Book Plus', Georgia, 'Times New Roman', serif;
+  --sans:  'Libertinus Sans', 'Gill Sans', 'Segoe UI', system-ui, sans-serif;
+
+  // Layout
+  --max: 72rem;            // widest content
+  --text: 42rem;           // comfortable reading width
 }
 
+// --- Basics ------------------------------------------------------------------
 * { box-sizing: border-box; }
-body { margin: 0; color: var(--text); background: var(--bg); font: 1.0625rem/1.65 var(--font); }
-a { color: var(--link); }
-.wrap { max-width: var(--max); margin: 0 auto; padding: 0 1rem; }
-.small, .meta { font-size: .875rem; color: var(--muted); font-family: var(--ui-font); }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 1.1875rem/1.6 var(--serif);   // 19px: Libertinus needs to be set a bit large
+  font-variant-numeric: oldstyle-nums;
+}
+img { max-width: 100%; height: auto; }
+a { color: var(--red); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+a:hover { color: var(--red-hover); }
+:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+h1, h2, h3, h4 { line-height: 1.15; font-weight: 600; text-wrap: balance; margin: 0 0 0.5em; }
+h1 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); }
+h2 { font-size: clamp(1.6rem, 2.6vw, 2.1rem); }
+h3 { font-size: 1.35rem; }
+.wrap { max-width: var(--max); margin: 0 auto; padding-left: 1.25rem; padding-right: 1.25rem; }
+.small, .meta { font-family: var(--sans); font-size: 0.875rem; color: var(--muted); }
+.skip-link { position: absolute; left: -9999px; }
+.skip-link:focus { left: 1rem; top: 1rem; z-index: 100; background: var(--card); padding: 0.5rem 1rem; }
 
-/* Header and menu */
-.site-header { border-bottom: 1px solid var(--line); font-family: var(--ui-font); }
-.header-inner { display: flex; flex-wrap: wrap; gap: .5rem 2rem; align-items: center; justify-content: space-between; padding-top: 1rem; padding-bottom: 1rem; }
-.brand { text-decoration: none; color: var(--text); display: flex; flex-direction: column; }
-.brand-name { font-weight: 700; font-size: 1.25rem; letter-spacing: .04em; }
-.brand-sub { font-size: .8rem; color: var(--muted); }
-.menu { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; }
-.menu a, .menu summary { text-decoration: none; color: var(--text); cursor: pointer; }
-.menu a[aria-current], .menu summary.current { color: var(--link); font-weight: 600; }
+// --- Header and menu ---------------------------------------------------------
+.site-header { background: var(--ink); color: var(--on-ink); }
+.header-inner {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 0.75rem 2rem; min-height: 5rem; padding-top: 0.75rem; padding-bottom: 0.75rem;
+}
+.brand { display: flex; align-items: center; gap: 1rem; color: var(--on-ink); text-decoration: none; }
+.brand:hover { color: var(--on-ink); }
+.brand-logo { height: 2.9rem; width: auto; display: block; }
+.brand-rule { width: 1px; align-self: stretch; background: var(--on-ink-rule); }
+.brand-text { display: flex; flex-direction: column; line-height: 1.2; }
+.brand-name { font-weight: 700; font-size: 1.3rem; letter-spacing: 0.08em; }
+.brand-sub { font-style: italic; font-size: 0.95rem; color: var(--on-ink-muted); }
+
+.menu { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 1.75rem; font-size: 1.125rem; }
+.menu a, .menu summary { color: var(--on-ink); text-decoration: none; cursor: pointer; }
+.menu a:hover, .menu summary:hover { color: var(--on-ink-muted); }
+.menu a[aria-current], .menu summary.current { text-decoration: underline; text-decoration-color: var(--red-fill); text-decoration-thickness: 2px; text-underline-offset: 0.35em; }
 .has-children { position: relative; }
 .has-children summary { list-style: none; }
-.has-children summary::after { content: " ▾"; font-size: .75em; }
-.submenu { list-style: none; margin: .25rem 0 0; padding: .5rem .75rem; position: absolute; z-index: 10; background: var(--bg); border: 1px solid var(--line); min-width: 15rem; }
-.submenu li { padding: .2rem 0; }
-
-/* Content */
-main { padding-top: 2rem; padding-bottom: 3rem; }
-.page-header { margin-bottom: 1.5rem; }
-.page-header h1, .home-intro h1 { margin: 0 0 .25rem; line-height: 1.25; }
-.page-desc { margin: 0; color: var(--muted); font-size: 1.1rem; }
-.prose h2 { margin-top: 2rem; }
-.home-section { margin-top: 2.5rem; }
-.home-section h2 a { color: inherit; text-decoration: none; }
-
-/* Edition / transcription links */
-.text-links { list-style: none; padding: 0; }
-.text-links li { border-top: 1px solid var(--line); padding: .75rem 0; display: flex; flex-direction: column; }
-.text-link-title { font-weight: 600; }
-.text-link-note { color: var(--muted); }
-.text-link-meta { font-family: var(--ui-font); font-size: .8rem; color: var(--muted); display: flex; gap: 1rem; }
-
-/* News */
-.post-list { list-style: none; padding: 0; }
-.post-list li { display: flex; gap: 1rem; padding: .4rem 0; }
-.post-date { flex: 0 0 6.5rem; color: var(--muted); font-family: var(--ui-font); font-size: .875rem; padding-top: .15rem; }
-.post-desc { margin: .1rem 0 0; color: var(--muted); }
-.label { font-family: var(--ui-font); font-size: .75rem; border: 1px solid var(--line); border-radius: 3px; padding: 0 .35rem; color: var(--muted); }
-
-/* Bibliography */
-ol.bibliography { list-style: none; padding: 0; }
-ol.bibliography li { margin-bottom: .9rem; }
-.bib-links { font-family: var(--ui-font); font-size: .8rem; display: flex; flex-wrap: wrap; gap: .75rem; align-items: baseline; }
-.bib-links pre { white-space: pre-wrap; font-size: .75rem; background: #f6f6f6; padding: .5rem; }
-
-/* Footer */
-.site-footer { border-top: 1px solid var(--line); padding: 1.5rem 0 2rem; font-family: var(--ui-font); font-size: .9rem; }
-.funding p { margin: 0 0 .5rem; }
-
-@media (max-width: 40rem) {
-  .post-list li { flex-direction: column; gap: 0; }
-  .post-date { flex: none; }
+.has-children summary::-webkit-details-marker { display: none; }
+.has-children summary::after { content: " ▾"; font-size: 0.8em; }
+.submenu {
+  list-style: none; margin: 0.5rem 0 0; padding: 0.5rem 0; position: absolute; z-index: 10; min-width: 16rem;
+  background: var(--card); border: 1px solid var(--rule-dark); border-radius: 6px; box-shadow: 0 8px 24px rgba(43, 36, 29, 0.15);
 }
+.submenu a { display: block; padding: 0.35rem 1rem; color: var(--ink); }
+.submenu a:hover, .submenu a[aria-current] { color: var(--red); text-decoration: none; }
+
+// --- Home page ---------------------------------------------------------------
+.hero { background: var(--paper-tint); }
+.hero-inner { display: flex; flex-wrap: wrap; align-items: center; gap: 2.5rem 3.5rem; padding-top: 4.5rem; padding-bottom: 4.5rem; }
+.hero-text { flex: 999 1 30rem; min-width: 0; }
+.hero-text h1 { font-size: clamp(2.4rem, 5vw, 3.5rem); line-height: 1.08; margin-bottom: 0.4em; }
+.hero-text h1 i { font-weight: 400; }
+.eyebrow { font-family: var(--sans); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); margin: 0 0 1rem; }
+.lede { font-size: 1.3rem; color: #4a3f33; max-width: 36rem; }
+.lede p { margin: 0; }
+.buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.75rem 0 0; }
+.button {
+  display: inline-flex; align-items: center; min-height: 2.9rem; padding: 0 1.4rem; border-radius: 6px;
+  font-family: var(--sans); font-weight: 700; font-size: 1rem; text-decoration: none;
+}
+.button-primary { background: var(--ink); color: var(--on-ink); }
+.button-primary:hover { background: #000; color: var(--on-ink); }
+.button-secondary { border: 1px solid var(--red); color: var(--red); }
+.button-secondary:hover { background: var(--red); color: var(--on-ink); }
+
+.card { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; }
+.text-card { flex: 1 1 22rem; min-width: 0; padding: 1.75rem; background: var(--paper); border-color: var(--rule-dark); }
+.text-card h2 { font-size: 1.4rem; margin-bottom: 0.15em; }
+.card-note { margin: 0 0 0.75rem; font-size: 1rem; color: var(--muted); }
+
+.home-section { padding-top: 4rem; }
+.home-section h2 a { color: inherit; text-decoration: none; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.5rem; }
+.section-card { display: flex; flex-direction: column; gap: 0.4rem; padding: 1.5rem; color: var(--ink); text-decoration: none; }
+.section-card:hover { border-color: var(--red-fill); color: var(--ink); }
+.section-card-title { font-size: 1.4rem; font-weight: 600; }
+.section-card-desc { color: #4a3f33; }
+.more { font-family: var(--sans); font-size: 0.9rem; font-weight: 700; color: var(--red); margin-top: 0.25rem; }
+.home-split { display: flex; flex-wrap: wrap; gap: 2.5rem 3.5rem; padding-bottom: 5rem; }
+.home-news { flex: 999 1 30rem; min-width: 0; }
+.home-output { flex: 1 1 18rem; min-width: 0; }
+
+// --- Edition / transcription links --------------------------------------------
+.text-links { list-style: none; margin: 0; padding: 0; }
+.text-links li { display: flex; flex-direction: column; gap: 0.1rem; padding: 0.8rem 0; border-top: 1px solid var(--rule); }
+.text-link-title { font-weight: 600; text-decoration: none; }
+.text-link-note { color: var(--muted); }
+.text-link-meta { display: flex; flex-wrap: wrap; gap: 0 1rem; font-family: var(--sans); font-size: 0.85rem; color: var(--muted); }
+.text-link-meta a { color: var(--muted); }
+
+// --- Inner pages ---------------------------------------------------------------
+.page-hero { background: var(--paper-tint); padding: 3.5rem 0 2.5rem; }
+.page-hero h1 { margin-bottom: 0.2em; }
+.page-hero .meta a { color: var(--red); }
+.page-desc { margin: 0; font-size: 1.3rem; color: #4a3f33; }
+.page-body { padding-top: 2.5rem; padding-bottom: 5rem; }
+.prose { max-width: var(--text); }
+.prose h2 { margin-top: 2.2rem; }
+.prose li { margin: 0.25rem 0; }
+.prose blockquote { margin: 1.5rem 0; padding-left: 1.25rem; border-left: 2px solid var(--red-fill); color: #4a3f33; }
+.prose code { font-size: 0.85em; background: var(--paper-tint); padding: 0.1em 0.3em; border-radius: 3px; }
+
+// --- News -------------------------------------------------------------------
+.post-list { list-style: none; margin: 0; padding: 0; }
+.post-list li { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 1rem; padding: 0.85rem 0; border-top: 1px solid var(--rule); align-items: baseline; }
+.post-date { font-family: var(--sans); font-size: 0.875rem; color: var(--muted); }
+.post-desc { margin: 0.15rem 0 0; color: var(--muted); font-size: 1.05rem; }
+.label { font-family: var(--sans); font-size: 0.75rem; color: var(--red); border: 1px solid #d8b0a7; border-radius: 4px; padding: 0.05rem 0.45rem; margin-left: 0.35rem; white-space: nowrap; }
+
+// --- Bibliography --------------------------------------------------------------
+ol.bibliography { list-style: none; margin: 0; padding: 0; }
+ol.bibliography li { margin: 0 0 1rem; padding-left: 1.5rem; text-indent: -1.5rem; }
+.bib-links { text-indent: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; align-items: baseline; font-family: var(--sans); font-size: 0.85rem; }
+.bib-links pre { white-space: pre-wrap; font-size: 0.8rem; background: var(--paper-tint); padding: 0.6rem; border-radius: 4px; }
+.bib-links summary { cursor: pointer; color: var(--muted); }
+
+// --- Footer -------------------------------------------------------------------
+.site-footer { background: var(--ink); color: var(--on-ink-muted); font-size: 1rem; }
+.site-footer a { color: var(--on-ink); }
+.footer-inner { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 1.5rem 2.5rem; padding-top: 2.75rem; padding-bottom: 3.5rem; }
+.funding { flex: 999 1 26rem; min-width: 0; }
+.funding p { margin: 0 0 0.5rem; }
+.funding-statement { color: var(--on-ink); }
+.site-footer .small { color: var(--on-ink-muted); }
+.footer-logo { flex: 0 0 auto; width: 9.5rem; height: 3.75rem; }
+.placeholder { border: 1px dashed #6e6252; display: flex; align-items: center; justify-content: center; text-align: center; font-family: var(--sans); font-size: 0.75rem; }
+
+// --- Small screens ---------------------------------------------------------------
+@media (max-width: 40rem) {
+  body { font-size: 1.125rem; }
+  .menu { font-size: 1.05rem; gap: 0.25rem 1.25rem; }
+  .hero-inner { padding-top: 3rem; padding-bottom: 3rem; }
+  .post-list li { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .submenu { position: static; box-shadow: none; }
+}
+
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }

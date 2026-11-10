@@ -7,13 +7,15 @@ layout: default
     last_updated:  YYYY-MM-DD, shown as "Last updated …"
     references:    true  → adds a list of all works cited on this page
 {%- endcomment -%}
-<article class="page">
-  <header class="page-header">
+<header class="page-hero">
+  <div class="wrap">
     <h1>{{ page.title }}</h1>
     {%- if page.description %}<p class="page-desc">{{ page.description }}</p>{% endif %}
     {%- if page.last_updated %}<p class="meta">Last updated {{ page.last_updated | date: '%-d %B %Y' }}</p>{% endif %}
-  </header>
+  </div>
+</header>
 
+<article class="wrap page-body">
   <div class="prose">
     {{ content }}
 

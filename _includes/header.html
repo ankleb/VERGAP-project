@@ -1,11 +1,16 @@
 {%- comment -%}
-  Site header and menu. The menu items come from _data/menu.yml.
+  Site header: logo (gaṇa traced from the Śāradā manuscript), project name,
+  and the menu. Menu items come from _data/menu.yml.
 {%- endcomment -%}
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="{{ '/' | relative_url }}">
-      <span class="brand-name">{{ site.title }}</span>
-      <span class="brand-sub">{{ site.subtitle }}</span>
+      <img class="brand-logo" src="{{ '/assets/img/logo/gana-paper.svg' | relative_url }}" alt="" width="90" height="46">
+      <span class="brand-rule" aria-hidden="true"></span>
+      <span class="brand-text">
+        <span class="brand-name">{{ site.title }}</span>
+        <span class="brand-sub">{{ site.subtitle }}</span>
+      </span>
     </a>
     <nav aria-label="Main menu">
       <ul class="menu">
@@ -20,7 +25,7 @@
           <details>
             <summary{% if here %} class="current"{% endif %}>{{ item.title }}</summary>
             <ul class="submenu">
-              <li><a href="{{ href }}">Overview</a></li>
+              <li><a href="{{ href }}"{% if page.url == item.url %} aria-current="page"{% endif %}>Overview</a></li>
               {%- for child in item.children %}
               {%- if child.url contains '://' -%}{%- assign chref = child.url -%}{%- else -%}{%- assign chref = child.url | relative_url -%}{%- endif %}
               <li><a href="{{ chref }}"{% if page.url == child.url %} aria-current="page"{% endif %}>{{ child.title }}</a></li>

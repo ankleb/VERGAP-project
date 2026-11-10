@@ -39,7 +39,8 @@ One-time setup on GitHub: **Settings → Pages → Source: GitHub Actions**.
 | Your own outputs (Outputs page) | `_bibliography/outputs.bib` |
 | Images | `assets/img/` |
 | Site title, funding texts, citation style | `_config.yml` |
-| Look and feel (placeholder for now) | `assets/css/style.scss` |
+| Look and feel: colours and fonts (first block) | `assets/css/style.scss` |
+| Logo (gaṇa traced from the Śāradā manuscript), tab icon, link-preview image | `assets/img/logo/`, `assets/img/og-image.png` |
 | Page templates | `_layouts/`, `_includes/` |
 
 ## Writing a news item or blog post
@@ -109,7 +110,6 @@ and open <http://localhost:4000/VERGAP-project/>.
 
 ## Open decisions
 
-- Visual design (the current styling is a deliberate placeholder).
 - EU emblem image in the footer (check Grant Agreement wording).
 - Licence for the website text.
 - Custom domain (if any): change `url` and `baseurl` in `_config.yml` and the
