@@ -6,7 +6,14 @@
 {%- endcomment -%}
 <footer class="site-footer">
   <div class="wrap footer-inner">
-    <div class="footer-logo placeholder" aria-hidden="true">[EU emblem]</div>
+    {%- comment -%}
+      EU emblem with "Funded by the European Union" (required by Article 17 of
+      the grant agreement). Shown unmodified on its own white panel, because
+      the blue text needs a light background.
+    {%- endcomment %}
+    <span class="footer-eu">
+      <img src="{{ '/assets/img/logo/eu-funded-by.jpg' | relative_url }}" alt="Funded by the European Union" width="267" height="56">
+    </span>
     <div class="funding">
       <p class="funding-statement">{{ site.funding_statement }}</p>
       <p class="small">{{ site.eu_disclaimer }}</p>
